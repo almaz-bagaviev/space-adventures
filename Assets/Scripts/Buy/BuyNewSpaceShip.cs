@@ -3,11 +3,11 @@ using UnityEngine.UI;
 public class BuyNewSpaceShip : MonoBehaviour
 {
     public int price;
-    public bool isbought; // куплен ли этот товар
+    public bool isbought;
     public string SpaseShipName;
     public int boughtnewSS;
-    public GameObject Panel, checkmark; //галочка
-    public Button StartButton; // кнопка СТАРТА ИГРЫ
+    public GameObject Panel, checkmark;
+    public Button StartButton;
 
     private void Start()
     {

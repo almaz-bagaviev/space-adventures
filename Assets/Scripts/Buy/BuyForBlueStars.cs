@@ -4,11 +4,11 @@ using UnityEngine.UI;
 public class BuyForBlueStars : MonoBehaviour
 {
     public int price;
-    public bool isbought; // куплен ли этот товар
+    public bool isbought;
     public string SpaseShipName;
     public int boughtnewSS;
     public GameObject Panel, checkmark;
-    public Button StartButton; // кнопка СТАРТА ИГРЫ
+    public Button StartButton;
 
 
     private void Start()
@@ -16,13 +16,8 @@ public class BuyForBlueStars : MonoBehaviour
         StartButton.enabled = false;
         boughtnewSS = PlayerPrefs.GetInt(SpaseShipName, 0);
 
-        if (boughtnewSS == 0)
-        {
-            Panel.SetActive(true);
-        }
-
-        else
-            Panel.SetActive(false);
+        if (boughtnewSS == 0) Panel.SetActive(true);
+        else Panel.SetActive(false);
     }
 
     public void Buy()
@@ -30,9 +25,12 @@ public class BuyForBlueStars : MonoBehaviour
         if (BlueStarText.bluestar >= price && isbought == false)
         {
             PlayerPrefs.GetInt(SpaseShipName, 1);
+
             BlueStarText.bluestar -= price;
             BlueStarTextPreview.bluestarP -= price;
+
             BlueStarShop.bluestarS -= price;
+
             Panel.SetActive(false);
             isbought = true;
             StartButton.enabled = true;

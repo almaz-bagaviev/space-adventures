@@ -5,10 +5,17 @@ public class ChangeSpaceShip : MonoBehaviour
     public GameObject SpaceShip_1, SpaceShip_2, SpaceShip_3, SpaceShip_4, SpaceShip_5, SpaceShip_6, SpaceShip_7, SpaceShip_8, SpaceShip_9;
     public GameObject checmark1, checmark2, checmark3, checmark4, checmark5, checmark6, checmark7, checmark8, checmark9;
 
+
+
+    private void Init()
+    {
+        BuySS1 buySS1 = new BuySS1();
+    }
+
     private void Update()
     {
         //Проверка для 1 Космического корабля
-        if (Selected.selectedSpaceShip == 1 && BuySS1.isboughtSS1 == true)
+        if (Selected.selectedSpaceShip == 1 && buySS1)
         {
             //Корабли
             SpaceShip_1.SetActive(true);

@@ -9,8 +9,7 @@ public class StartGame : MonoBehaviour
     public void GotoGame()
     {
         GameIsStart = true;
-        Debug.Log("Игра началась!");
-
+        Debug.Log("Game is Started");
         GameCamera.enabled = true;
         StartCamera.enabled = false;
     }
@@ -18,7 +17,6 @@ public class StartGame : MonoBehaviour
     public void GoBackToPreview()
     {
         SceneManager.LoadScene("Game");
-        GameIsStart = false;
-        
+        GameIsStart = false;      
     }
 }
