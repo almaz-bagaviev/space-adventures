@@ -1,18 +1,19 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.Stars;
+using UnityEngine;
 using UnityEngine.UI;
 
-public class CoinTextPreview : MonoBehaviour
+public class CoinTextPreview : Star
 {
     public static int coinP;
-    public static Text cointextP;
+    public static Text coinTextP;
 
     private void Start()
     {
-        cointextP = gameObject.GetComponent<Text>();
-        coinP = PlayerPrefs.GetInt("CoinP", coinP);
+        Initial(coinP, coinTextP, "CoinP");
     }
+
     private void Update()
     {
-        cointextP.text = coinP.ToString();
+        Shop(coinP, coinTextP);
     }
 }

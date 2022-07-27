@@ -1,18 +1,18 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.Stars;
+using UnityEngine;
 using UnityEngine.UI;
 
-public class BlueStarShop : MonoBehaviour
+public class BlueStarShop : Star
 {
     public static int bluestarS;
     public static Text bluestartextS;
 
     private void Start()
     {
-        bluestartextS = gameObject.GetComponent<Text>();
-        bluestarS = PlayerPrefs.GetInt("StarP", bluestarS);
+        Initial(bluestarS, bluestartextS, "StarP");
     }
     private void Update()
     {
-        bluestartextS.text = bluestarS.ToString();
+        Shop(bluestarS, bluestartextS);
     }
 }
