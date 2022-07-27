@@ -36,17 +36,25 @@ Build/
 Logs
 *log
 
-/Space_Set_Cartoon/
 Font/
 VFX/
 Stones and Crystals/
+ Simple UI/
+ Space_Set_Cartoon/
+
 *.png
 *.meta
 Sprites/
+
 *svg
 Scenes/
 Prefabs/
 Background/
 Animation/
 
+ProjectSettings/
+UserSettings/
+
 Library/
+
+Music/
