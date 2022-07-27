@@ -6,15 +6,15 @@ namespace Assets.Scripts.Stars
 {
     public class Star : MonoBehaviour
     {
-        public void Initial(int obj, Text text, string key)
-        {
-            text = gameObject.GetComponent<Text>();
-            obj = PlayerPrefs.GetInt(key, obj);
-        }
+        //private protected void Initial(int obj, Text text, string key)
+        //{
+        //    text = gameObject.GetComponent<Text>();
+        //    obj = PlayerPrefs.GetInt(key, obj);
+        //}
 
-        public void Shop(int obj, Text textObj)
-        {
-            textObj.text = obj.ToString();
-        }
+        //private protected void Shop(int obj, Text textObj)
+        //{
+        //    textObj.text = obj.ToString();
+        //}
     }
 }

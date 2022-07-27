@@ -1,22 +1,19 @@
-﻿using System.Collections;
+﻿using Assets.Scripts.Spawn;
+using System.Collections;
 using UnityEngine;
 
-public class SpawnCoins : MonoBehaviour
+public class SpawnCoins : MainSpawn
 {
     public GameObject Coin;
-    private bool Coin_IS_Spawn;
-    private float random_position;
-
+    bool coinIsSpawn;
+    float random_position;
 
     private void Update()
     {
-        if (StartGame.GameIsStart && !Coin_IS_Spawn)
-        {
-            StartCoroutine(NewSpawnCoin());
-            Coin_IS_Spawn = true;
-        }   
+        SpawnStart(coinIsSpawn, NewSpawnCoin());
     }
-    IEnumerator NewSpawnCoin()
+
+    private IEnumerator NewSpawnCoin()
     {
         while (StartGame.GameIsStart)
         {

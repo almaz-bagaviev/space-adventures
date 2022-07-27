@@ -4,7 +4,6 @@ public class Selected : MonoBehaviour
 {
     public static int selectedSpaceShip;
 
-
     public void SelectedSpaceShip1()
     {
         selectedSpaceShip = 1;

@@ -10,7 +10,6 @@ public class Lose : MonoBehaviour
         {
             LosePanel.SetActive(true);
             Debug.Log("Взрыв создан");
-
         }
     }
 }

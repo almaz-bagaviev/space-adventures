@@ -1,23 +1,34 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.Buy;
+using System.Collections.Generic;
+using UnityEngine;
 
 public class ChangeSpaceShip : MonoBehaviour
 {
     public GameObject SpaceShip_1, SpaceShip_2, SpaceShip_3, SpaceShip_4, SpaceShip_5, SpaceShip_6, SpaceShip_7, SpaceShip_8, SpaceShip_9;
     public GameObject checmark1, checmark2, checmark3, checmark4, checmark5, checmark6, checmark7, checmark8, checmark9;
 
+    List<BuySS> purchases;
 
-
-    private void Init()
+    private void Start()
     {
-        BuySS1 buySS1 = new BuySS1();
+        purchases = new List<BuySS>
+        {
+            new BuySS1(),
+            new BuySS2(),
+            new BuySS3(),
+            new BuySS4(),
+            new BuySS5(),
+            new BuySS6(),
+            new BuySS7(),
+            new BuySS8(),
+            new BuySS9(),
+        };
     }
 
     private void Update()
     {
-        //Проверка для 1 Космического корабля
-        if (Selected.selectedSpaceShip == 1 && buySS1)
+        if (Selected.selectedSpaceShip == 1 && purchases[0].isBoughtSS)
         {
-            //Корабли
             SpaceShip_1.SetActive(true);
             SpaceShip_2.SetActive(false);
             SpaceShip_3.SetActive(false);
@@ -28,7 +39,6 @@ public class ChangeSpaceShip : MonoBehaviour
             SpaceShip_8.SetActive(false);
             SpaceShip_9.SetActive(false);
 
-            //Галочки
             checmark1.SetActive(true);
             checmark2.SetActive(false);
             checmark3.SetActive(false);
@@ -40,10 +50,8 @@ public class ChangeSpaceShip : MonoBehaviour
             checmark9.SetActive(false);
         }
 
-        //Проверка для 2 Космического корабля
-        else if (Selected.selectedSpaceShip == 2 && BuySS2.isboughtSS2 == true)
+        else if (Selected.selectedSpaceShip == 2 && purchases[1].isBoughtSS)
         {
-            //Корабли
             SpaceShip_1.SetActive(false);
             SpaceShip_2.SetActive(true);
             SpaceShip_3.SetActive(false);
@@ -54,7 +62,6 @@ public class ChangeSpaceShip : MonoBehaviour
             SpaceShip_8.SetActive(false);
             SpaceShip_9.SetActive(false);
 
-            //Галочки
             checmark1.SetActive(false);
             checmark2.SetActive(true);
             checmark3.SetActive(false);
@@ -66,10 +73,8 @@ public class ChangeSpaceShip : MonoBehaviour
             checmark9.SetActive(false);
         }
 
-        //Проверка для 3 Космического корабля
-        else if (Selected.selectedSpaceShip == 3 && BuySS3.isboughtSS3 == true)
+        else if (Selected.selectedSpaceShip == 3 && purchases[2].isBoughtSS)
         {
-            //Корабли
             SpaceShip_1.SetActive(false);
             SpaceShip_2.SetActive(false);
             SpaceShip_3.SetActive(true);
@@ -80,7 +85,6 @@ public class ChangeSpaceShip : MonoBehaviour
             SpaceShip_8.SetActive(false);
             SpaceShip_9.SetActive(false);
 
-            //Галочки
             checmark1.SetActive(false);
             checmark2.SetActive(false);
             checmark3.SetActive(true);
@@ -92,10 +96,8 @@ public class ChangeSpaceShip : MonoBehaviour
             checmark9.SetActive(false);
         }
 
-        //Проверка для 4 Космического корабля
-        else if (Selected.selectedSpaceShip == 4 && BuySS4.isboughtSS4 == true)
+        else if (Selected.selectedSpaceShip == 4 && purchases[3].isBoughtSS)
         {
-            //Корабли
             SpaceShip_1.SetActive(false);
             SpaceShip_2.SetActive(false);
             SpaceShip_3.SetActive(false);
@@ -106,7 +108,6 @@ public class ChangeSpaceShip : MonoBehaviour
             SpaceShip_8.SetActive(false);
             SpaceShip_9.SetActive(false);
 
-            //Галочки
             checmark1.SetActive(false);
             checmark2.SetActive(false);
             checmark3.SetActive(false);
@@ -118,10 +119,8 @@ public class ChangeSpaceShip : MonoBehaviour
             checmark9.SetActive(false);
         }
 
-        //Проверка для 5 Космического корабля
-        else if (Selected.selectedSpaceShip == 5 && BuySS5.isboughtSS5 == true)
+        else if (Selected.selectedSpaceShip == 5 && purchases[4].isBoughtSS)
         {
-            //Корабли
             SpaceShip_1.SetActive(false);
             SpaceShip_2.SetActive(false);
             SpaceShip_3.SetActive(false);
@@ -132,7 +131,6 @@ public class ChangeSpaceShip : MonoBehaviour
             SpaceShip_8.SetActive(false);
             SpaceShip_9.SetActive(false);
 
-            //Галочки
             checmark1.SetActive(false);
             checmark2.SetActive(false);
             checmark3.SetActive(false);
@@ -144,10 +142,8 @@ public class ChangeSpaceShip : MonoBehaviour
             checmark9.SetActive(false);
         }
 
-        //Проверка для 6 Космического корабля
-        else if (Selected.selectedSpaceShip == 6 && BuySS6.isboughtSS6 == true)
+        else if (Selected.selectedSpaceShip == 6 && purchases[5].isBoughtSS)
         {
-            //Корабли
             SpaceShip_1.SetActive(false);
             SpaceShip_2.SetActive(false);
             SpaceShip_3.SetActive(false);
@@ -158,7 +154,6 @@ public class ChangeSpaceShip : MonoBehaviour
             SpaceShip_8.SetActive(false);
             SpaceShip_9.SetActive(false);
 
-            //Галочки
             checmark1.SetActive(false);
             checmark2.SetActive(false);
             checmark3.SetActive(false);
@@ -170,10 +165,8 @@ public class ChangeSpaceShip : MonoBehaviour
             checmark9.SetActive(false);
         }
 
-        //Проверка для 7 Космического корабля
-        else if (Selected.selectedSpaceShip == 7 && BuySS7.isboughtSS7 == true)
+        else if (Selected.selectedSpaceShip == 7 && purchases[6].isBoughtSS)
         {
-            //Корабли
             SpaceShip_1.SetActive(false);
             SpaceShip_2.SetActive(false);
             SpaceShip_3.SetActive(false);
@@ -184,7 +177,6 @@ public class ChangeSpaceShip : MonoBehaviour
             SpaceShip_8.SetActive(false);
             SpaceShip_9.SetActive(false);
 
-            //Галочки
             checmark1.SetActive(false);
             checmark2.SetActive(false);
             checmark3.SetActive(false);
@@ -196,10 +188,8 @@ public class ChangeSpaceShip : MonoBehaviour
             checmark9.SetActive(false);
         }
 
-        //Проверка для 8 Космического корабля
-        else if (Selected.selectedSpaceShip == 8 && BuySS8.isboughtSS8 == true)
+        else if (Selected.selectedSpaceShip == 8 && purchases[7].isBoughtSS)
         {
-            //Корабли
             SpaceShip_1.SetActive(false);
             SpaceShip_2.SetActive(false);
             SpaceShip_3.SetActive(false);
@@ -210,7 +200,6 @@ public class ChangeSpaceShip : MonoBehaviour
             SpaceShip_8.SetActive(true);
             SpaceShip_9.SetActive(false);
 
-            //Галочки
             checmark1.SetActive(false);
             checmark2.SetActive(false);
             checmark3.SetActive(false);
@@ -222,10 +211,8 @@ public class ChangeSpaceShip : MonoBehaviour
             checmark9.SetActive(false);
         }
 
-        //Проверка для 9 Космического корабля
-        else if (Selected.selectedSpaceShip == 9 && BuySS9.isboughtSS9 == true)
-        {
-            //Корабли
+        else if (Selected.selectedSpaceShip == 9 && purchases[8].isBoughtSS)
+        {        
             SpaceShip_1.SetActive(false);
             SpaceShip_2.SetActive(false);
             SpaceShip_3.SetActive(false);
@@ -236,7 +223,6 @@ public class ChangeSpaceShip : MonoBehaviour
             SpaceShip_8.SetActive(false);
             SpaceShip_9.SetActive(true);
 
-            //Галочки
             checmark1.SetActive(false);
             checmark2.SetActive(false);
             checmark3.SetActive(false);
@@ -249,4 +235,3 @@ public class ChangeSpaceShip : MonoBehaviour
         }
     }
 }
-

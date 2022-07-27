@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 namespace Assets.Scripts.Buy
 {
-    public abstract class BuySS : MonoBehaviour
+    public abstract class BuySS
     {
         public int price;
         public bool isBoughtSS;

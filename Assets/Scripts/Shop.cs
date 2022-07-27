@@ -10,10 +10,7 @@ public class Shop : MonoBehaviour
         ShopCamera.enabled = true;
         StartCamera.enabled = false;
         GameCamera.enabled = false;
+    }
 
-    }
-    public void GoBackPreview()
-    {
-        SceneManager.LoadScene("Game");
-    }
+    public void GoBackPreview() => SceneManager.LoadScene("Game");
 }

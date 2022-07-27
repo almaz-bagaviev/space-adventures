@@ -1,7 +1,8 @@
-﻿using System.Collections;
+﻿using Assets.Scripts.Spawn;
+using System.Collections;
 using UnityEngine;
 
-public class ElectroBoom : MonoBehaviour
+public class ElectroBoom : MainSpawn
 {
     public GameObject Electro;
     bool electroIsSpawn;
@@ -9,11 +10,7 @@ public class ElectroBoom : MonoBehaviour
 
     private void Update()
     {
-        if (StartGame.GameIsStart && !electroIsSpawn)
-        {
-            StartCoroutine(NewSpawnElectro());
-            electroIsSpawn = true;
-        }
+        SpawnStart(electroIsSpawn, NewSpawnElectro());
     }
 
     private IEnumerator NewSpawnElectro()
