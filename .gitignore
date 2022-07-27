@@ -39,11 +39,13 @@ Logs
 Font/
 VFX/
 Stones and Crystals/
+
  Simple UI/
  Space_Set_Cartoon/
 
 *.png
 *.meta
+*.mp3
 Sprites/
 
 *svg
