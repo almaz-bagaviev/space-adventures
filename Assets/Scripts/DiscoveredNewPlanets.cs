@@ -10,19 +10,16 @@ public class DiscoveredNewPlanets : MonoBehaviour
     float Repeat = 1f;
     Text textInfo;
 
-    /// <summary>
-    /// Панель с надписью об открытии новой планеты
-    /// </summary>
-    public GameObject PanelONP;
+    public GameObject openNewPlanetPanel;
     GameObject K0, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16, K17, K18, K19, K20,
         K21, K22, K23, K24, K25, K26, K27, K28, K29, K30, K31, K32, K33, K34, K35, K36, K37, K38, K39, K40, K41, K42, K43, K44, K45;
 
 
     private void Start()
     {
-        PanelONP = gameObject.transform.GetChild(0).gameObject;
+        openNewPlanetPanel = gameObject.transform.GetChild(0).gameObject;
         textInfo = gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).GetComponent<Text>();
-        PanelONP.SetActive(false);
+        openNewPlanetPanel.SetActive(false);
         CreateArtefacts();
     }
 
@@ -50,7 +47,7 @@ public class DiscoveredNewPlanets : MonoBehaviour
     private void ShowInPanel(string text, GameObject gameObject)
     {
         Instantiate(VFXFireWorks[RandomVFX], new Vector2(1f, 17.88f), Quaternion.identity);
-        PanelONP.SetActive(true);
+        openNewPlanetPanel.SetActive(true);
         gameObject.SetActive(true);
         Destroy(gameObject, DestroyTime);
         textInfo.text = $"Discovered new planet - {text}! New artifact:";
@@ -60,7 +57,7 @@ public class DiscoveredNewPlanets : MonoBehaviour
     private void ShowInPanel(string text)
     {
         Instantiate(VFXFireWorks[RandomVFX], new Vector2(1f, 17.88f), Quaternion.identity);
-        PanelONP.SetActive(true);
+        openNewPlanetPanel.SetActive(true);
         textInfo.text = $"Discovered new planet - {text}!";
         StartCoroutines();
     }
@@ -68,7 +65,7 @@ public class DiscoveredNewPlanets : MonoBehaviour
     private void ShowEnding()
     {
         Instantiate(VFXFireWorks[RandomVFX], new Vector2(1f, 17.88f), Quaternion.identity);
-        PanelONP.SetActive(true);
+        openNewPlanetPanel.SetActive(true);
         textInfo.text = "HOT.STOP NOW!";
 
         StartCoroutine(SetActiveFalse()); //старт Coroutine для скрытия Панели с текстом об открытии Новой планеты
@@ -159,7 +156,7 @@ public class DiscoveredNewPlanets : MonoBehaviour
     private IEnumerator SetActiveFalse()
     {
         yield return new WaitForSeconds(DestroyTime);
-        PanelONP.SetActive(false);
+        openNewPlanetPanel.SetActive(false);
     }
 
     private IEnumerator BooomAnim()
