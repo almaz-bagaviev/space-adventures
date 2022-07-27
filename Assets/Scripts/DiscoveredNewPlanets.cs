@@ -4,59 +4,69 @@ using System.Collections;
 
 public class DiscoveredNewPlanets : MonoBehaviour
 {
-    int RandomVFX;
+    int randomVFX;
     public GameObject[] VFXFireWorks;
-    float DestroyTime = 6f;
-    float Repeat = 1f;
+    float destroyTime = 6f;
+    float repeat = 1f;
     Text textInfo;
 
     public GameObject openNewPlanetPanel;
-    GameObject K0, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16, K17, K18, K19, K20,
-        K21, K22, K23, K24, K25, K26, K27, K28, K29, K30, K31, K32, K33, K34, K35, K36, K37, K38, K39, K40, K41, K42, K43, K44, K45;
+    GameObject stone0, stone1, stone2, stone3, stone4, stone5, stone6, stone7, stone8,
+        stone9, stone10, stone11, stone12, stone13, stone14, stone15, stone16, stone17,
+        stone18, stone19, stone20, stone21, stone22, stone23, stone24, stone25, stone26,
+        stone27, stone28, stone29, stone30, stone31, stone32, stone33, stone34, stone35,
+        stone36, stone37, stone38, stone39, stone40, stone41, stone42, stone43, stone44, stone45;
 
+    GameObject[] stones;
+
+
+    private void Awake()
+    {
+        stones = new GameObject[46] {stone0, stone1, stone2, stone3, stone4, stone5, stone6, stone7, stone8, stone9, stone10,
+            stone11, stone12, stone13, stone14, stone15, stone16, stone17, stone18, stone19, stone20,
+            stone21, stone22, stone23, stone24, stone25, stone26, stone27, stone28, stone29, stone30,
+            stone31, stone32, stone33, stone34, stone35, stone36, stone37, stone38, stone39, stone40,
+            stone41, stone42, stone43, stone44, stone45};
+    }
 
     private void Start()
     {
         openNewPlanetPanel = gameObject.transform.GetChild(0).gameObject;
         textInfo = gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).GetComponent<Text>();
         openNewPlanetPanel.SetActive(false);
-        CreateArtefacts();
+        InitializeStones();
     }
 
-    private void CreateArtefacts()
+    private void InitializeStones()
     {
-        for (byte i = 0; i <= 45; i++)
+        for (byte i = 0; i < 46; i++)
         {
             Stones(i);
         }
     }
 
-    /// <summary>
-    /// Метод создания Камней/Артефактов
-    /// </summary>
-    /// <param name="i">GetChild(n)</param>
-    /// <returns></returns>
     private GameObject Stones(byte i)
     {
         GameObject GO = gameObject.transform.GetChild(0).gameObject.transform.GetChild(1).gameObject.transform.GetChild(i).gameObject;
-        return GO;
+        stones[i] = GO;
+        return stones[i];
     }
 
-    private void Update() => RandomVFX = Random.Range(0, VFXFireWorks.Length);
+    private void Update() => randomVFX = Random.Range(0, VFXFireWorks.Length);
 
     private void ShowInPanel(string text, GameObject gameObject)
     {
-        Instantiate(VFXFireWorks[RandomVFX], new Vector2(1f, 17.88f), Quaternion.identity);
+        Instantiate(VFXFireWorks[randomVFX], new Vector2(1f, 17.88f), Quaternion.identity);
         openNewPlanetPanel.SetActive(true);
         gameObject.SetActive(true);
-        Destroy(gameObject, DestroyTime);
+        Destroy(gameObject, destroyTime);
         textInfo.text = $"Discovered new planet - {text}! New artifact:";
         StartCoroutines();
     }
 
     private void ShowInPanel(string text)
     {
-        Instantiate(VFXFireWorks[RandomVFX], new Vector2(1f, 17.88f), Quaternion.identity);
+        Instantiate(VFXFireWorks[randomVFX], new Vector2(1f, 17.88f), Quaternion.identity);
         openNewPlanetPanel.SetActive(true);
         textInfo.text = $"Discovered new planet - {text}!";
         StartCoroutines();
@@ -64,89 +74,89 @@ public class DiscoveredNewPlanets : MonoBehaviour
 
     private void ShowEnding()
     {
-        Instantiate(VFXFireWorks[RandomVFX], new Vector2(1f, 17.88f), Quaternion.identity);
+        Instantiate(VFXFireWorks[randomVFX], new Vector2(1f, 17.88f), Quaternion.identity);
         openNewPlanetPanel.SetActive(true);
         textInfo.text = "HOT.STOP NOW!";
 
-        StartCoroutine(SetActiveFalse()); //старт Coroutine для скрытия Панели с текстом об открытии Новой планеты
+        StartCoroutine(SetActiveFalse());
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         switch (collision.gameObject.name)
         {
-            case "Планета1(Clone)": ShowInPanel("CALLIOPE", K0); break;
-            case "Планета2(Clone)": ShowInPanel("AARON", K1); break;
-            case "Планета3(Clone)": ShowInPanel("HOREA", K2); break;
-            case "Планета4(Clone)": ShowInPanel("LEGION", K3); break;
-            case "Планета5(Clone)": ShowInPanel("RHODEY", K4); break;
+            case "Planet1(Clone)": ShowInPanel("CALLIOPE", stones[0]); break;
+            case "Planet2(Clone)": ShowInPanel("AARON", stones[1]); break;
+            case "Planet3(Clone)": ShowInPanel("HOREA", stones[2]); break;
+            case "Planet4(Clone)": ShowInPanel("LEGION", stones[3]); break;
+            case "Planet5(Clone)": ShowInPanel("RHODEY", stones[4]); break;
 
-            case "Планета6(Clone)": ShowInPanel("RICTOR", K5); break;
-            case "Планета7(Clone)": ShowInPanel("KANG", K6); break;
-            case "Планета8(Clone)": ShowInPanel("X-55", K7); break;
-            case "Планета9(Clone)": ShowInPanel("MAKKARI", K8); break;
-            case "Планета10(Clone)": ShowInPanel("QUEEN", K9); break;
+            case "Planet6(Clone)": ShowInPanel("RICTOR", stones[5]); break;
+            case "Planet7(Clone)": ShowInPanel("KANG", stones[6]); break;
+            case "Planet8(Clone)": ShowInPanel("X-55", stones[7]); break;
+            case "Planet9(Clone)": ShowInPanel("MAKKARI", stones[8]); break;
+            case "Planet10(Clone)": ShowInPanel("QUEEN", stones[9]); break;
 
-            case "Планета11(Clone)": ShowInPanel("ARANA", K10); break;
-            case "Планета12(Clone)": ShowInPanel("EOS-2", K11); break;
-            case "Планета13(Clone)": ShowInPanel("VIPER", K12); break;
-            case "Планета14(Clone)": ShowInPanel("DIANA", K13); break;
-            case "Планета15(Clone)": ShowInPanel("LIANA", K14); break;
+            case "Planet11(Clone)": ShowInPanel("ARANA", stones[10]); break;
+            case "Planet12(Clone)": ShowInPanel("EOS-2", stones[11]); break;
+            case "Planet13(Clone)": ShowInPanel("VIPER", stones[12]); break;
+            case "Planet14(Clone)": ShowInPanel("DIANA", stones[13]); break;
+            case "Planet15(Clone)": ShowInPanel("LIANA", stones[14]); break;
 
-            case "Планета16(Clone)": ShowInPanel("ALMAZ", K15); break;
-            case "Планета17(Clone)": ShowInPanel("ARMADILLO", K16); break;
-            case "Планета18(Clone)": ShowInPanel("UNICORN", K17); break;
-            case "Планета19(Clone)": ShowInPanel("SIA", K18); break;
-            case "Планета20(Clone)": ShowInPanel("AA-3", K19); break;
+            case "Planet16(Clone)": ShowInPanel("ALMAZ", stones[15]); break;
+            case "Planet17(Clone)": ShowInPanel("ARMADILLO", stones[16]); break;
+            case "Planet18(Clone)": ShowInPanel("UNICORN", stones[17]); break;
+            case "Planet19(Clone)": ShowInPanel("SIA", stones[18]); break;
+            case "Planet20(Clone)": ShowInPanel("AA-3", stones[19]); break;
 
-            case "Планета21(Clone)": ShowInPanel("EGO", K20); break;
-            case "Планета22(Clone)": ShowInPanel("A-15", K21); break;
-            case "Планета23(Clone)": ShowInPanel("A-16", K22); break;
-            case "Планета24(Clone)": ShowInPanel("ZARDA", K23); break;
-            case "Планета25(Clone)": ShowInPanel("CABLE", K24); break;
+            case "Planet21(Clone)": ShowInPanel("EGO", stones[20]); break;
+            case "Planet22(Clone)": ShowInPanel("A-15", stones[21]); break;
+            case "Planet23(Clone)": ShowInPanel("A-16", stones[22]); break;
+            case "Planet24(Clone)": ShowInPanel("ZARDA", stones[23]); break;
+            case "Planet25(Clone)": ShowInPanel("CABLE", stones[24]); break;
 
-            case "Планета26(Clone)": ShowInPanel("PERIT-1", K25); break;
-            case "Планета27(Clone)": ShowInPanel("LEECH", K26); break;
-            case "Планета28(Clone)": ShowInPanel("JETSTREAM", K27); break;
-            case "Планета29(Clone)": ShowInPanel("B-34", K28); break;
-            case "Планета30(Clone)": ShowInPanel("AURORA", K29); break;
+            case "Planet26(Clone)": ShowInPanel("PERIT-1", stones[25]); break;
+            case "Planet27(Clone)": ShowInPanel("LEECH", stones[26]); break;
+            case "Planet28(Clone)": ShowInPanel("JETSTREAM", stones[27]); break;
+            case "Planet29(Clone)": ShowInPanel("B-34", stones[28]); break;
+            case "Planet30(Clone)": ShowInPanel("AURORA", stones[29]); break;
 
-            case "Планета31(Clone)": ShowInPanel("AVALANCHE", K30); break;
-            case "Планета32(Clone)": ShowInPanel("IRON PLANET", K31); break;
-            case "Планета33(Clone)": ShowInPanel("M.A.", K32); break;
-            case "Планета34(Clone)": ShowInPanel("DEVOS", K33); break;
-            case "Планета35(Clone)": ShowInPanel("TUTU-1", K34); break;
+            case "Planet31(Clone)": ShowInPanel("AVALANCHE", stones[30]); break;
+            case "Planet32(Clone)": ShowInPanel("IRON PLANET", stones[31]); break;
+            case "Planet33(Clone)": ShowInPanel("M.A.", stones[32]); break;
+            case "Planet34(Clone)": ShowInPanel("DEVOS", stones[33]); break;
+            case "Planet35(Clone)": ShowInPanel("TUTU-1", stones[34]); break;
 
-            case "Планета36(Clone)": ShowInPanel("MORDO", K35); break;
-            case "Планета37(Clone)": ShowInPanel("HELL", K36); break;
-            case "Планета38(Clone)": ShowInPanel("PRIZM", K37); break;
-            case "Планета39(Clone)": ShowInPanel("PRIDE", K38); break;
-            case "Планета40(Clone)": ShowInPanel("Z-101", K39); break;
+            case "Planet36(Clone)": ShowInPanel("MORDO", stones[35]); break;
+            case "Planet37(Clone)": ShowInPanel("HELL", stones[36]); break;
+            case "Planet38(Clone)": ShowInPanel("PRIZM", stones[37]); break;
+            case "Planet39(Clone)": ShowInPanel("PRIDE", stones[38]); break;
+            case "Planet40(Clone)": ShowInPanel("Z-101", stones[39]); break;
 
-            case "Планета41(Clone)": ShowInPanel("EARTH-2", K40); break;
-            case "Планета42(Clone)": ShowInPanel("NOVA", K41); break;
-            case "Планета43(Clone)": ShowInPanel("GRAVITY", K42); break;
-            case "Планета44(Clone)": ShowInPanel("FIRE PLANET", K43); break;
-            case "Планета45(Clone)": ShowInPanel("UHP-1", K44); break;
-            case "Планета46(Clone)": ShowInPanel("UHP-2", K45); break;
+            case "Planet41-NotEarth(Clone)": ShowInPanel("EARTH-2", stones[40]); break;
+            case "Planet42(Clone)": ShowInPanel("NOVA", stones[41]); break;
+            case "Planet43(Clone)": ShowInPanel("GRAVITY", stones[42]); break;
+            case "Planet44(Clone)": ShowInPanel("FIRE PLANET", stones[43]); break;
+            case "Planet45(Clone)": ShowInPanel("UHP-1", stones[44]); break;
+            case "Planet46(Clone)": ShowInPanel("UHP-2", stones[45]); break;
 
-            case "Плутон(Clone)": ShowInPanel("PLUTO! BUT IS IT A PLANET?"); break;
-            case "Нептун(Clone)": ShowInPanel("NEPTUNE"); break;
-            case "Уран(Clone)": ShowInPanel("URANUS"); break;
-            case "Сатурн(Clone)": ShowInPanel("SATURN"); break;
-            case "Юпитер(Clone)": ShowInPanel("JUPITER"); break;
+            case "Pluto(Clone)": ShowInPanel("PLUTO! BUT IS IT A PLANET?"); break;
+            case "Neptune(Clone)": ShowInPanel("NEPTUNE"); break;
+            case "Uranus(Clone)": ShowInPanel("URANUS"); break;
+            case "Saturn(Clone)": ShowInPanel("SATURN"); break;
+            case "Jupiter(Clone)": ShowInPanel("JUPITER"); break;
 
-            case "Марс(Clone)": ShowInPanel("MARS"); break;
-            case "Планета Земля(Clone)": ShowInPanel("EARTH"); break;
-            case "Венера(Clone)": ShowInPanel("VENUS"); break;
-            case "Меркурий(Clone)": ShowInPanel("MERCURY"); break;
-            case "Солнце(Clone)": ShowEnding(); break;
+            case "Mars(Clone)": ShowInPanel("MARS"); break;
+            case "Earth(Clone)": ShowInPanel("EARTH"); break;
+            case "Venus(Clone)": ShowInPanel("VENUS"); break;
+            case "Mercury(Clone)": ShowInPanel("MERCURY"); break;
+            case "Sun(Clone)": ShowEnding(); break;
         }
     }
 
     private void StartCoroutines()
     {
-        StartCoroutine(SetActiveFalse()); //старт Coroutine для скрытия Панели с текстом об открытии Новой планеты
+        StartCoroutine(SetActiveFalse());
         for (int i = 0; i < 3; i++)
         {
             StartCoroutine(BooomAnim());
@@ -155,13 +165,13 @@ public class DiscoveredNewPlanets : MonoBehaviour
 
     private IEnumerator SetActiveFalse()
     {
-        yield return new WaitForSeconds(DestroyTime);
+        yield return new WaitForSeconds(destroyTime);
         openNewPlanetPanel.SetActive(false);
     }
 
     private IEnumerator BooomAnim()
     {
-        yield return new WaitForSeconds(Repeat);
-        Instantiate(VFXFireWorks[RandomVFX], new Vector2(1f, 17.88f), Quaternion.identity);
+        yield return new WaitForSeconds(repeat);
+        Instantiate(VFXFireWorks[randomVFX], new Vector2(1f, 17.88f), Quaternion.identity);
     }
 }
